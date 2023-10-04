@@ -20,6 +20,6 @@ function App() {
       </header>
     </div>
   );
-}
+} //Функциональный компонент, реактовский компанент
 
-export default App;
+export default App; // для импорта в другую библиотеку

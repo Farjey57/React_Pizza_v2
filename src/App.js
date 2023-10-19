@@ -5,8 +5,11 @@ import Categories from './components/Categories';
 import Sort from './components/Sort';
 import PizzaBlock from './components/PizzaBlock';
 
+import pizzas from './assets/pizza.json';
+
 import './scss/app.scss';
 
+console.log(pizzas)
 
 function App() {
   return (

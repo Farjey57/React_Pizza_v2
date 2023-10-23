@@ -9,7 +9,7 @@ import pizzas from './assets/pizza.json';
 
 import './scss/app.scss';
 
-console.log(pizzas)
+console.log(pizzas);
 
 function App() {
   return (
@@ -23,15 +23,16 @@ function App() {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            <PizzaBlock title="Мексиканская" price={500} />
-            <PizzaBlock title="Итальянская" price="475" />
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
+            {pizzas.map((obj) => (
+              // {...obj} - если ключи такие же точно будут
+              <PizzaBlock
+                title={obj.title}
+                price={obj.price}
+                image={obj.imageUrl}
+                sizes={obj.sizes}
+                types={obj.types}
+              />
+            ))}
           </div>
         </div>
       </div>

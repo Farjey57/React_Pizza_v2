@@ -15,6 +15,7 @@ function PizzaBlock({ title, price, image, sizes, types }) {
             //Рендерим массив типов пицц
             types.map((typeId, i) => (
               <li
+                key={typeId}
                 onClick={() => setActiveType(typeId)}
                 className={activeType === i ? 'active' : ''}>
                 {typeNames[typeId]}
@@ -27,6 +28,7 @@ function PizzaBlock({ title, price, image, sizes, types }) {
             // Рендерим массив размеров пицц
             sizes.map((size, i) => (
               <li
+                key={size}
                 onClick={() => setActiveSize(i)}
                 className={activeSize === i ? 'active' : ''}>
                 {size} см.

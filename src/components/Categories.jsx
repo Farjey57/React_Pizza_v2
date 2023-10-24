@@ -15,7 +15,7 @@ function Categories() {
         {categories.map((value, i) => {
           // Рендер списка из массива
           return (
-            <li onClick={() => onClickCategory(i)} className={activeIndex === i ? 'active' : ''}>
+            <li key={i} onClick={() => onClickCategory(i)} className={activeIndex === i ? 'active' : ''}>
               {value}
             </li>
           );

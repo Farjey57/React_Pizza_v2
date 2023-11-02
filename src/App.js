@@ -8,6 +8,12 @@ import NotFound from './pages/NotFound';
 
 import './scss/app.scss';
 
+const url = new URL('https://PROJECT_TOKEN.mockapi.io/users/1/tasks');
+url.searchParams.append('sortBy', 'title');
+url.searchParams.append('order', 'desc'); // order parameter is optional and will default to `asc`
+
+console.log(url)
+
 function App() {
   return (
     <div className="wrapper">

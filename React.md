@@ -280,7 +280,9 @@ import PizzaBlock from './components/PizzaBlock';
 `name.module.scss` - модуль css, вебпак уникализирует классы для каждого блока.
 
 Подключение ReactRouter:
-```import { BrowserRouter } from 'react-router-dom';```
+```
+import { BrowserRouter } from 'react-router-dom';
+```
 
 
 `<BrowserRouter>` - браузер роут, в него оборачиваем все приложение
@@ -292,3 +294,46 @@ import PizzaBlock from './components/PizzaBlock';
 ## Контекст
 
 ## Redux 
+
+
+# Урок 11 Props Drilling
+
+Props Drilling - прокидывание пропса через несколько компонентов. Это нежелательно (не больше 2 урвоней, в идеале 1 или нет).
+
+### createContext()
+
+Контекст создается следующим ообразом:
+
+```
+export const SearchContext = React.createContext();
+```
+- `export` сразу помещает контекст в "глобальную" область видимости
+- эта область ограничена  `<SearchContext.Provider>`
+
+### SearchContext.Provider
+
+`SearchContext.Provider` - это компонент, в который с помощью пропса value пркоидываются необходимые значения, которые нужно внести в глобальную область видимости
+
+```
+ <SearchContext.Provider value={{ searchValue, setSearchValue }}>
+```
+
+### useContext
+
+Доступ получаем через импорт и хук `useContext`, указав название контекста. Деструктурируем необходимые пропсы.
+
+```
+import { SearchContext } from '../../App';
+
+const { searchValue, setSearchValue } = useContext(SearchContext);
+```
+
+# УРок 12 Redux Toolkit
+
+Redux Toolkit - это Менджер состояний
+
+### Что делает?
+
+Создает глобальную базу данных для фронтенда
+
+### Какую проблему решает данная технология?

@@ -346,3 +346,26 @@ React - библиотека.
 Redux - библиотека. 
 React-redux - библиотека, которая призвана подружить  react с redux.
 React-toolkit - библиотека, которая упращет работу с redux в связке с react. 
+
+## Slice
+
+```
+const filterSlice = createSlice({
+  name: 'filters',
+  initialState,
+  reducers: {
+    setCategoryId(state, action) {
+      console.log(action);
+      state.categoryId = action.payload; /* payload хранит переданное значение */
+    },
+  },
+});
+```
+- обязательно содержит имя
+- initialState - начально состояние, задаем в виде константы
+- reducers - доступные методы. Передаются затем в св-во actions (filterSlice.actions)
+- state - redux сам его получает, хранит, изменяет
+
+### action
+
+action обязательно хранит в себе type, и другую инфу (обычно payload)

@@ -1,6 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { decrement, increment } from './redux/slices/filterSlice'
+
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -14,24 +13,9 @@ export const SearchContext = React.createContext();
 
 function App() {
   const [searchValue, setSearchValue] = React.useState(''); // глобальный стест для поиска пиццы. Передаем в Header, а далее в Search
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
 
   return (
     <div className="wrapper">
-      
-      <div>
-        <div>
-          <button aria-label="Increment value" onClick={() => dispatch(increment())}>
-            Increment
-          </button>
-          <span>{count}</span>
-          <button aria-label="Decrement value" onClick={() => dispatch(decrement())}>
-            Decrement
-          </button>
-        </div>
-      </div>
-
       <SearchContext.Provider value={{ searchValue, setSearchValue }}>
         <Header />
         <div className="content">

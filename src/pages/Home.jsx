@@ -1,4 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setCategoryId } from '../redux/slices/filterSlice';
 
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
@@ -8,11 +11,14 @@ import Pagination from '../components/Pagination';
 import { SearchContext } from '../App';
 
 const Home = () => {
+  const dispatch = useDispatch(); // спец функция, которая есть в редаксе, чтобы использовать её в реакте
+  const categoryId = useSelector((state) => state.filter.categoryId); //получаем из стейта нужную информацию из нужноого слайса
+
   const { searchValue } = useContext(SearchContext);
 
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [categoryId, setCategoryId] = useState(0); // стейт для хранения выбраной категории
+  //const [categoryId, setCategoryId] = useState(0); // стейт для хранения выбраной категории
   const [currentPage, setCurrentPage] = useState(1);
   const [sortType, setSortType] = useState({
     name: 'популярности (наиболее)',
@@ -24,6 +30,10 @@ const Home = () => {
   const sortBy = sortType.sortProperty;
   const order = sortType.order;
   const search = searchValue ? `&search=${searchValue}` : '';
+
+  const onChangeCategory = (id) => {
+    dispatch(setCategoryId(id));
+  };
 
   useEffect(() => {
     setIsLoading(true); //Начало загрузки, отображаем скелетон
@@ -53,7 +63,7 @@ const Home = () => {
   return (
     <>
       <div className="content__top">
-        {<Categories value={categoryId} onChangeCategory={(id) => setCategoryId(id)} />}
+        {<Categories value={categoryId} onChangeCategory={(id) => onChangeCategory(id)} />}
         <Sort value={sortType} onChangeSort={(id) => setSortType(id)} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
